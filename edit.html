@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Page</title>
+    <link rel='stylesheet' type='text/css' href='min.css'>
+</head>
+<script src="https://www.gstatic.com/firebasejs/5.6.0/firebase.js"></script>
+<script src="index.js"></script>
+<script src='app.js'></script>
+<script>
+    // Initialize Firebase
+    var config = {
+        apiKey: "AIzaSyCtcfpRYRD68-cseRbljeihLN_MKI3K0rc",
+        authDomain: "cse134b-hw6-661a9.firebaseapp.com",
+        databaseURL: "https://cse134b-hw6-661a9.firebaseio.com",
+        projectId: "cse134b-hw6-661a9",
+        storageBucket: "gs://cse134b-hw6-661a9.appspot.com",
+        messagingSenderId: "457854721855"
+    };
+    firebase.initializeApp(config);
+
+</script>
+    
+<style>
+    @font-face{
+        font-family: "Oswald";
+        src: url("Font/Oswald-Regular.ttf") format('truetype');
+        font-weight: 400;
+        font-style: normal;
+    }
+
+    @font-face{
+        font-family: "Oswald";
+        src: url("Font/Oswald-Bold.tff") format('truetype');
+        font-weight: 700;
+        font-style: normal;
+    }
+</style>
+    
+<body>
+    <h1 id = 'login' style='text-align: center;'>Dream Meme</h1>
+    
+    <nav id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <a href="home.html">Home</a>
+        <a href="edit.html">Edit</a>
+        <a href="create.html">Create</a>
+    </nav>
+    <span id='nav' style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span>
+        
+    <canvas id="memeCanvas" width="400px" height="400px">
+    
+    </canvas>
+    
+    <form id="memeForm">
+        <label>Meme Name: <input type="text" id="memeNameInput" name="memeName" value="Meme"></label><br>
+        <label>Top Text: <input type="text" id="topTextInput" name="topText" value="Hello"></label><br>
+        <label>Bottom Text: <input type="text" id="bottomTextInput" name="bottomText" value="Aloha"></label><br>
+        <label>Progress: <progress value="0" max="100" id="progress">0%</progress></label><br>
+        <input type="file" accept="image/jpeg,image/png,image/gif" value="upload" id="uploadButton"><br>
+        <input type="button" id="createButton" value="Save">
+        
+        <input type="button" id="deleteButton" value="Delete">
+    </form>
+
+    <div id="memeDisplayDiv">
+    </div>
+
+</body>
+</html>
