@@ -72,8 +72,6 @@ function onclick_create() {
     let iconctx = iconCanvas.getContext('2d');
     iconctx.drawImage(canvas,0,0, canvas.width, canvas.height, 0, 0, iconCanvas.width, iconCanvas.height);
     let iconImgData = iconCanvas.toDataURL("image/jpeg", 0.8);
-    console.log(`Data: ${imgData}`);
-    console.log(`Icon Data: ${iconImgData}`);
 
     //Get file and compress it to save bandwidth
     let file = document.getElementById("uploadButton").files[0];
@@ -87,13 +85,14 @@ function onclick_create() {
             originalCanvas.height = img.height;
             let originalCtx = originalCanvas.getContext('2d');
             originalCtx.drawImage(img,0,0);
+            let fileName =`${bareMinimum.index}-${file.name}`;
             //Create Storage Ref
             let storageRef = firebase.storage().ref().child(firebase.auth().currentUser.uid);
-            let memeFileRef = storageRef.child(file.name);
+            let memeFileRef = storageRef.child(fileName);
             //Upload the file
             let uploadTask = memeFileRef.putString(originalCanvas.toDataURL("image/jpeg", 0.7), "data_url");
             bareMinimum.currentMemePath = memeFileRef.fullPath;
-            bareMinimum.currentFileName = file.name;
+            bareMinimum.currentFileName = fileName;
             uploadTask.on("state_changed",
                 function onChange(snapshot) {
                     let bytesTransferred = snapshot.bytesTransferred;
