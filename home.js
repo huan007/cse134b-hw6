@@ -57,15 +57,27 @@ function onImageClick(i) {
         let topText = snapshot.child("topText").val();
         let bottomText = snapshot.child("bottomText").val();
         //This is the source path to the original image without texts
-        let srcPath = snapshot.child("srcImagePath");
+        let srcPath = snapshot.child("srcImagePath").val();
         //This is the path to the rendered image with texts
-        let renderedPath = snapshot.child("renderedImagePath");
+        let renderedPath = snapshot.child("renderedImagePath").val();
 
         //This is how you get the image. Replace srcPath with renderedPath if you want
         //the rendered image
-        let srcImageRef = firebase.storage().ref(srcPath);
-        srcImageRef.getDownloadURL().then( snapshot => {
+        let srcImageRef = firebase.storage().ref(renderedPath);
+		console.log(renderedPath);
+        srcImageRef.getDownloadURL().then( url => {
             //Put your stuffs in here. Remember this is ASYNC
+			var img = document.getElementById('imgdisplay');
+			if(img.firstChild)
+			{
+				img.innerHTML = '';
+				let imgstring = `<img src="${url}">`;
+				img.insertAdjacentHTML("beforeend", imgstring);
+			}
+			else{
+				let imgstring = `<img src="${url}">`;
+				img.insertAdjacentHTML("beforeend", imgstring);
+			}
         });
     });
 }

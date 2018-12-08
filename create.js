@@ -18,6 +18,7 @@ function init() {
 
     //Add event listener to watch when the user is logged in
     firebase.auth().onAuthStateChanged(onAuthenticationChanged);
+
 }
 
 function onAuthenticationChanged(user) {
@@ -36,7 +37,18 @@ function onAuthenticationChanged(user) {
             bareMinimum.index = snapshot.numChildren();
             console.log(`Updated Index to (${bareMinimum.index})`);
         });
-    }
+		
+		var el = window.document.getElementById('topTextInput');
+		var el2 = window.document.getElementById('bottomText');
+		if(el)
+		{
+			el.addEventListener('onchange', changeText(), true);	
+		}
+		if(el2)
+		{
+			el.addEventListener('pnchange', changeText(), true)
+		}
+		}
     //If the user logged out
     else {
         console.log("User logged out");
@@ -189,7 +201,7 @@ function drawMeme(canvasID, topText, bottomText) {
     let canvas = document.getElementById(`${canvasID}`);
     ctx = canvas.getContext('2d');
     ctx.lineWidth  = 5;
-    ctx.font = '30pt sans-serif';
+    ctx.font = '30pt impact';
     ctx.strokeStyle = 'black';
     ctx.fillStyle = 'white';
     ctx.textAlign = 'center';
@@ -206,4 +218,14 @@ function drawMeme(canvasID, topText, bottomText) {
     y = canvas.height - canvas.height/12;
     ctx.strokeText(bottomText, x, y);
     ctx.fillText(bottomText, x, y);
+}
+
+
+function changeText(){ 
+	var rt = document.getElementById('topTextInput').value; 
+	var rb = document.getElementById('bottomTextInput').value;
+	let canvas = document.getElementById('memeCanvas');
+	var input = document.getElementById('uploadButton');
+	imageLoader(input.files[0], "memeCanvas", rt, rb);
+	
 }

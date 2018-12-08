@@ -10,7 +10,8 @@
     <script async src="https://www.gstatic.com/firebasejs/5.7.0/firebase-auth.js"></script>
     <script async src="https://www.gstatic.com/firebasejs/5.7.0/firebase-database.js"></script>
     <script async src="https://www.gstatic.com/firebasejs/5.7.0/firebase-storage.js"></script>
-    <script src="home.js"></script>
+    <script src="app.js"></script>
+	<script src="home.js"></script>
     <script>
         // Initialize Firebase
         var config = {
@@ -36,8 +37,6 @@
 </nav>
 <span id='nav' style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span>
 
-<br>
-<img src="1bin.jpg" id='img' style='display:none'>
 
 <div id='main'>
     <div class='column'>
@@ -51,10 +50,12 @@
         </script>
     </div>
     <div class='column'>
-        <canvas id="imgdisplay" width="500" height="500" style="border:1px solid grey">
-        </canvas>
+        <div id="imgdisplay" width="500" height="500" style="border:1px solid grey; display:hidden;">
+		</div>
+		<button onclick="edit.html">Edit</button>
+		<button>Delete</button>
         <form>Share:</form>
     </div>
-</div>
+	</div>
 </body>
 </html>

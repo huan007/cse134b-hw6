@@ -49,22 +49,35 @@
     </nav>
     <span id='nav' style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span>
         
-    <canvas id="memeCanvas" width="400px" height="400px">
-    
-    </canvas>
-    
-    <form id="memeForm">
-        <label>Meme Name: <input type="text" id="memeNameInput" name="memeName" value="Meme"></label><br>
-        <label>Top Text: <input type="text" id="topTextInput" name="topText" value="Hello"></label><br>
-        <label>Bottom Text: <input type="text" id="bottomTextInput" name="bottomText" value="Aloha"></label><br>
-        <label>Progress: <progress value="0" max="100" id="progress">0%</progress></label><br>
-        <input type="file" accept="image/jpeg,image/png,image/gif" value="upload" id="uploadButton"><br>
-        <input type="button" id="createButton" value="Save">
-        
-        <input type="button" id="deleteButton" value="Delete">
-    </form>
+    <div id='main'>
+        <canvas id="memeCanvas" width="400px" height="400px">
 
-    <div id="memeDisplayDiv">
+        </canvas>
+
+        <form id="memeForm">
+            <label>Meme Name: <input type="text" id="memeNameInput" name="memeName" value="Meme"></label>
+
+            <br>
+            <br>
+
+            <label>Top Text: <input type="text" id="topTextInput" name="topText" value="Hello"></label>
+
+            <label>Bottom Text: <input type="text" id="bottomTextInput" name="bottomText" value="Aloha"></label>
+
+            <br>
+            <br>
+
+            <label>Progress: <progress value="0" max="100" id="progress">0%</progress></label><br>
+            <br>
+
+            <input type="file" accept="image/jpeg,image/png,image/gif" value="upload" id="uploadButton"><br>
+
+            <br>
+
+            <input type="button" id="createButton" class ="button" value="Save">
+
+            <input type="button" id="deleteButton" class="button" value="Delete">
+        </form>
     </div>
 
 </body>
