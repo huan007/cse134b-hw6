@@ -2,7 +2,8 @@ var bareMinimum = {
     oldIndex: 0,
     index: 0,
     currentMemePath: null,
-    currentFileName: null
+    currentFileName: null,
+    selectedIndex: 0
 }
 
 function init() {
@@ -46,6 +47,7 @@ function saveI(i, memeName) {
 }
 
 function onImageClick(i) {
+    bareMinimum.selectedIndex = i;
     let uid = firebase.auth().currentUser.uid;
     //Go to that specific location of the image to grab the info
     let imageDBRef = firebase.database().ref().child(uid).child(i);
@@ -78,6 +80,9 @@ function onImageClick(i) {
 				let imgstring = `<img src="${url}">`;
 				img.insertAdjacentHTML("beforeend", imgstring);
 			}
+			let downloadLink = document.getElementById("downloadLink");
+			downloadLink.href = url;
+			downloadLink.download = "meme.jpeg";
         });
     });
 }
@@ -103,4 +108,8 @@ function displayMemes(snapshot) {
         count++;
     });
 
+}
+
+function onClick_edit () {
+    window.location.href = `edit.html?index=${bareMinimum.selectedIndex}`;
 }
