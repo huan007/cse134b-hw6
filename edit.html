@@ -6,7 +6,7 @@
     <link rel='stylesheet' type='text/css' href='min.css'>
 </head>
 <script src="https://www.gstatic.com/firebasejs/5.6.0/firebase.js"></script>
-<script src="index.js"></script>
+
 <script src='app.js'></script>
 <script>
     // Initialize Firebase
@@ -19,9 +19,11 @@
         messagingSenderId: "457854721855"
     };
     firebase.initializeApp(config);
-
+	window.onload = () => {
+    	init();
+   	};
 </script>
-    
+<script src='edit.js'></script>
 <style>
     @font-face{
         font-family: "Oswald";
@@ -55,14 +57,14 @@
         </canvas>
 
         <form id="memeForm">
-            <label>Meme Name: <input type="text" id="memeNameInput" name="memeName" value="Meme"></label>
+            <label>Meme Name: <input type="text" id="memeNameInput" name="memeName" value=""></label>
 
             <br>
             <br>
 
-            <label>Top Text: <input type="text" id="topTextInput" name="topText" value="Hello"></label>
+            <label>Top Text: <input type="text" id="topTextInput" name="topText" value=""></label>
 
-            <label>Bottom Text: <input type="text" id="bottomTextInput" name="bottomText" value="Aloha"></label>
+            <label>Bottom Text: <input type="text" id="bottomTextInput" name="bottomText" value=""></label>
 
             <br>
             <br>
@@ -76,7 +78,7 @@
 
             <input type="button" id="createButton" class ="button" value="Save">
 
-            <input type="button" id="deleteButton" class="button" value="Delete">
+            <input type="button" id="deleteButton" class="button" value="Delete" action=deleteMeme()>
         </form>
     </div>
 
