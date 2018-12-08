@@ -22,9 +22,13 @@ function init() {
         //This is how you get the image. Replace srcPath with renderedPath if you want
         //the rendered image
         let srcImageRef = firebase.storage().ref(srcPath);
+		
         srcImageRef.getDownloadURL().then( url => {
             //Display the Image
             //Fill in the information (memeName, top text, bottom text)
+			let img = url;
+			let canvas = document.getElementById('memeCanvas');
+			drawMeme(canvas, topText, bottomText);
         });
     });
 }
